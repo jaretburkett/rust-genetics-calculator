@@ -56,7 +56,9 @@ export default function GeneInput() {
         label="New Gene"
         name="newGene"
       >
-        <Input />
+        <Input 
+          autoComplete={'none'}
+        />
       </Form.Item>
 
     </Form>

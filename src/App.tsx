@@ -4,6 +4,7 @@ import { availableGeneticsStore, breedingGeneticsStore } from './lib/store';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Row, Col, Divider } from 'antd';
 import GeneInput from './components/GeneInput';
+import AvailableGenetics from './components/AvailableGenetics';
 
 export default function App() {
   const [availableGenetics, setAvailableGenetics] = availableGeneticsStore.use();
@@ -14,6 +15,9 @@ export default function App() {
         <Col className="gutter-row" span={6}>
           <div style={{ padding: '8px 0' }}>
             <GeneInput />
+          </div>
+          <div style={{ padding: '8px 0' }}>
+            <AvailableGenetics />
           </div>
         </Col>
       </Row>
