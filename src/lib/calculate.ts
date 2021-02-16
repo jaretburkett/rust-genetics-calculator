@@ -32,6 +32,7 @@ const geneStrengthDefault: GeneStrength[] = [
 
 const greenGeneStrength = 10;
 const redGeneStrength = 19;
+const numGenes = 6;
 
 const redGenes = ['w', 'x'];
 
@@ -41,7 +42,7 @@ const getGeneStrengthArr = (breedingGenetics: string[]) => {
 
   // go through each genetic place holder to determine genetic output
   let geneStrengthArr = [] as GeneStrength[][];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < numGenes; i++) {
     let geneStrength = objCopy(geneStrengthDefault);
     // go through all plants and add their strengths
     for (let p = 0; p < splits.length; p++) {
@@ -74,5 +75,9 @@ const getGeneStrengthArr = (breedingGenetics: string[]) => {
 
 export const calculateOutputs = (breedingGenetics: string[]) => {
   let geneStrengthArr = getGeneStrengthArr(breedingGenetics);
-  // sort all the genes
+  let possibleGenes: string[] = [''];
+  // determine genes by strength
+  for (let i = 0; i < numGenes; i++) {
+    
+  }
 };
