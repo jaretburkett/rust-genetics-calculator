@@ -57,11 +57,22 @@ const getGeneStrengthArr = (breedingGenetics: string[]) => {
         }
       }
     }
+    // sort the genes based on strength
+    geneStrength.sort((a, b) => {
+      if(a.strength > b.strength){
+        return 1;
+      } else if(a.strength < b.strength){
+        return -1;
+      } else {
+        return 0;
+      }
+    })
     geneStrengthArr.push(geneStrength);
   }
   return geneStrengthArr;
 }
 
 export const calculateOutputs = (breedingGenetics: string[]) => {
-  let geneStrengthArr = getGeneStrengthArr(breedingGenetics)
+  let geneStrengthArr = getGeneStrengthArr(breedingGenetics);
+  // sort all the genes
 };
