@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { availableGeneticsStore } from '../lib/store';
 import { Form, Input } from 'antd';
+import { objCopy } from '../lib/basic';
 
 const possibleGenes = ['Y', 'G', 'H', 'W', 'X'];
 
@@ -20,8 +21,10 @@ export default function GeneInput() {
       name="geneInput"
       fields={fields}
       onFinish={(values) => {
-        if(values.newGene.length === 6){
-          availableGenetics.push(values.newGene);
+        if (values.newGene.length === 6) {
+          const genes = objCopy(availableGenetics);
+          genes.push(values.newGene);
+          setAvailableGenetics(genes);
           setFields([{ name: ['newGene'], value: '' }])
         }
         // check to make sure it is valid
@@ -30,12 +33,12 @@ export default function GeneInput() {
       onFieldsChange={(_, allFields) => {
         const cleanFields = allFields.map((field) => {
           //@ts-ignore
-          if(field.name[0] === 'newGene') {
+          if (field.name[0] === 'newGene') {
             field.value = (field.value as string).toUpperCase();
             let fieldArr = field.value.split('');
             // remove non possible genes
-            fieldArr = fieldArr.filter((value:string) => possibleGenes.includes(value));
-            if(fieldArr.length > 6){
+            fieldArr = fieldArr.filter((value: string) => possibleGenes.includes(value));
+            if (fieldArr.length > 6) {
               fieldArr = fieldArr.slice(0, 6);
             }
             field.value = fieldArr.join('');
