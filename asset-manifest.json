@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/rust-genetics-calculator/static/css/main.39ba63bb.chunk.css",
+    "main.js": "/rust-genetics-calculator/static/js/main.076dd379.chunk.js",
+    "main.js.map": "/rust-genetics-calculator/static/js/main.076dd379.chunk.js.map",
+    "runtime-main.js": "/rust-genetics-calculator/static/js/runtime-main.201562d9.js",
+    "runtime-main.js.map": "/rust-genetics-calculator/static/js/runtime-main.201562d9.js.map",
+    "static/js/2.4ab9e265.chunk.js": "/rust-genetics-calculator/static/js/2.4ab9e265.chunk.js",
+    "static/js/2.4ab9e265.chunk.js.map": "/rust-genetics-calculator/static/js/2.4ab9e265.chunk.js.map",
+    "index.html": "/rust-genetics-calculator/index.html",
+    "static/css/main.39ba63bb.chunk.css.map": "/rust-genetics-calculator/static/css/main.39ba63bb.chunk.css.map",
+    "static/js/2.4ab9e265.chunk.js.LICENSE.txt": "/rust-genetics-calculator/static/js/2.4ab9e265.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.201562d9.js",
+    "static/js/2.4ab9e265.chunk.js",
+    "static/css/main.39ba63bb.chunk.css",
+    "static/js/main.076dd379.chunk.js"
+  ]
+}
