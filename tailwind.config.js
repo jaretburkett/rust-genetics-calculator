@@ -1,6 +1,8 @@
+console.log('TAILWINDS ENV', process.env.NODE_ENV)
+const isDev = process.env.NODE_ENV === 'development'
 module.exports = {
   // purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  purge: [],
+  purge: isDev ? [] : ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -133,8 +135,8 @@ module.exports = {
           '400': '#9e9691',
           '500': '#86807c',
           '600': '#6e6a67',
-          '700': '#3a3a39',
-          '800': '#353533',
+          '700': '#30302d',
+          '800': '#272724',
           '900': '#1e2020'
         },
         green: {
