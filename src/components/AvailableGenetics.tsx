@@ -15,7 +15,7 @@ export default function AvailableGenetics() {
           padding: '10px 15px',
           overflow: 'auto'
         }}
-        className="bg-gray-100"
+        className="rounded-sm px-4 py-3 bg-gray-800"
       >
         {availableGenetics.map((value, index) => {
           return (
@@ -43,7 +43,7 @@ export default function AvailableGenetics() {
                     breeding.push(value);
                     setBreedingGenetics(breeding)
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-green-500"
                 />
               </div>
               <div>
@@ -54,7 +54,7 @@ export default function AvailableGenetics() {
                     available.splice(index, 1);
                     setAvailableGenetics(available)
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-red-500"
                 />
               </div>
             </div>

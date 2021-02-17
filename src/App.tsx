@@ -10,8 +10,8 @@ export default function App() {
   const [availableGenetics, setAvailableGenetics] = availableGeneticsStore.use();
   const [breedingGenetics, setBreedingGenetics] = breedingGeneticsStore.use();
   return (
-    <div className="container mx-auto px-4">
-      <div className="text-center">
+    <div className="container mx-auto px-4 text-gray-50">
+      <div className="text-center pt-3">
         <img src={logo} className="max-h-16 mx-auto"/>
       </div>
 

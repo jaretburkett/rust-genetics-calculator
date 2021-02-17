@@ -14,7 +14,7 @@ export default function BreedingGenetics() {
           padding: '10px 15px',
           overflow: 'auto'
         }}
-        className="bg-gray-100"
+        className="rounded-sm px-4 py-3 bg-gray-800"
       >
         {breedingGenetics.map((value, index) => {
           return (
@@ -36,12 +36,15 @@ export default function BreedingGenetics() {
                 }
               </div>
               <div>
-                <FaTrashAlt onClick={() => {
-                  console.log('delete ' + index)
-                  const breeding = objCopy(breedingGenetics);
-                  breeding.splice(index, 1);
-                  setBreedingGenetics(breeding)
-                }} />
+                <FaTrashAlt
+                  onClick={() => {
+                    console.log('delete ' + index)
+                    const breeding = objCopy(breedingGenetics);
+                    breeding.splice(index, 1);
+                    setBreedingGenetics(breeding)
+                  }}
+                  className="cursor-pointer text-red-500"
+                />
               </div>
             </div>
           )

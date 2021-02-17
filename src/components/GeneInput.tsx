@@ -20,7 +20,7 @@ export default function GeneInput() {
         <input
           type="text"
           value={gene}
-          className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
+          className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-800 text-gray-50 w-full"
           style={{
             width:'100%'
           }}
