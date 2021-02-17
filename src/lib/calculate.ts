@@ -96,3 +96,72 @@ export const calculateOutputs = (breedingGenetics: string[]) => {
   }
   return possibleGenes;
 };
+
+const getBreedScore = (
+  possibility: string[],
+  target: string
+): number => {
+  let bestScore = 0;
+  let targetArr = target.toUpperCase().split('');
+  const goodGeneScore = 10;
+  const badGeneScore = -2;
+  const perOutPenalty = -1;
+
+  const outputs = calculateOutputs(possibility);
+  for(let i = 0; i < outputs.length; i++){
+    let tar = objCopy(targetArr);
+    let score = 0;
+    const outArr = outputs[i].toUpperCase().split('');
+    for(let g = 0; g < outArr.length; g++){
+      const tarIndex = tar.indexOf(outArr[g]);
+      if(tarIndex > -1){
+        // we need this gene, app points
+        score += goodGeneScore;
+        // remove it from our local target
+        tar.splice(tarIndex, 1);
+      } else if (redGenes.includes(outArr[g])){
+        score += badGeneScore;
+      }
+    }
+    // adjust score for num out penalty
+    score += (perOutPenalty * outputs.length)
+    if(score > bestScore){
+      bestScore = score;
+    }
+  }
+  return bestScore;
+
+}
+
+export const breedForTarget = (
+  availableGenetics: string[],
+  target: string
+) => {
+  // generate all possibilities
+  let possibilities: string[][] = [];
+  for (let i1 = 0; i1 < availableGenetics.length; i1++) {
+    for (let i2 = 0; i2 < availableGenetics.length; i2++) {
+      for (let i3 = 0; i3 < availableGenetics.length; i3++) {
+        for (let i4 = 0; i4 < availableGenetics.length; i4++) {
+          possibilities.push([
+            availableGenetics[i1],
+            availableGenetics[i2],
+            availableGenetics[i3],
+            availableGenetics[i4]
+          ])
+        }
+      }
+    }
+  }
+  let bestBreeder: string[] = [];
+  let bestBreedScore = 0;
+
+  for(let i = 0; i < possibilities.length; i++){
+    const score = getBreedScore(possibilities[i], target);
+    if(score > bestBreedScore){
+      bestBreedScore = score;
+      bestBreeder = objCopy(possibilities[i])
+    }
+  }
+  return bestBreeder;
+}

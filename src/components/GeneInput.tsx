@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { availableGeneticsStore } from '../lib/store';
+import { availableGeneticsStore, breedingGeneticsStore, isSmartStore, targetStore } from '../lib/store';
 import { objCopy, possibleGenes } from '../lib/basic';
+import { breedForTarget } from '../lib/calculate';
 
 
 export default function GeneInput() {
@@ -8,6 +9,7 @@ export default function GeneInput() {
   const [gene, setGene] = useState('');
   return (
     <div>
+      <p className="text-sm">Add Genes</p>
       <form onSubmit={(e) => {
         e.preventDefault();
         if (gene.length === 6) {
@@ -15,12 +17,15 @@ export default function GeneInput() {
           genes.push(gene);
           setAvailableGenetics(genes);
           setGene('');
+          if(isSmartStore.get()){
+            breedingGeneticsStore.set(breedForTarget(genes, targetStore.get()));
+          }
         }
       }}>
         <input
           type="text"
           value={gene}
-          className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-800 text-gray-50 w-full"
+          className="rounded-sm px-4 py-3 focus:outline-none bg-gray-800 text-gray-50 w-full"
           style={{
             width:'100%'
           }}

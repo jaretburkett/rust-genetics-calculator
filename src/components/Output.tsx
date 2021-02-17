@@ -14,11 +14,11 @@ export default function Output() {
     <p className="text-sm">Result</p>
       <div
         style={{
-          height: 200,
+          height: 180,
           padding: '10px 15px',
           overflow: 'auto'
         }}
-        className="rounded-sm px-4 py-3 bg-gray-800"
+        className="rounded-sm px-4 py-3 bg-gray-700"
       >
         {outputs.map((value, index) => {
           return (
