@@ -1,66 +1,43 @@
 import React, { useState } from 'react';
 import { availableGeneticsStore } from '../lib/store';
-import { Form, Input } from 'antd';
-import { objCopy } from '../lib/basic';
+import { objCopy, possibleGenes } from '../lib/basic';
 
-const possibleGenes = ['Y', 'G', 'H', 'W', 'X'];
-
-interface FieldData {
-  name: string | number | (string | number)[];
-  value?: any;
-  touched?: boolean;
-  validating?: boolean;
-  errors?: string[];
-}
 
 export default function GeneInput() {
   const [availableGenetics, setAvailableGenetics] = availableGeneticsStore.use();
-  const [fields, setFields] = useState<FieldData[]>([{ name: ['newGene'], value: '' }]);
+  const [gene, setGene] = useState('');
   return (
-    <Form
-      name="geneInput"
-      fields={fields}
-      onFinish={(values) => {
-        if (values.newGene.length === 6) {
+    <div>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        if (gene.length === 6) {
           const genes = objCopy(availableGenetics);
-          genes.push(values.newGene);
+          genes.push(gene);
           setAvailableGenetics(genes);
-          setFields([{ name: ['newGene'], value: '' }])
+          setGene('');
         }
-        // check to make sure it is valid
-        console.log('onFinish', values);
-      }}
-      onFieldsChange={(_, allFields) => {
-        const cleanFields = allFields.map((field) => {
-          //@ts-ignore
-          if (field.name[0] === 'newGene') {
-            field.value = (field.value as string).toUpperCase();
-            let fieldArr = field.value.split('');
+      }}>
+        <input
+          type="text"
+          value={gene}
+          className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
+          style={{
+            width:'100%'
+          }}
+          placeholder="eg: XYYHGG"
+          onChange={(e) => {
+            let value = e.target.value.toUpperCase();
+            let fieldArr = value.split('');
             // remove non possible genes
             fieldArr = fieldArr.filter((value: string) => possibleGenes.includes(value));
             if (fieldArr.length > 6) {
               fieldArr = fieldArr.slice(0, 6);
             }
-            field.value = fieldArr.join('');
-
-            return field;
-          } else {
-            return field;
-          }
-        })
-        console.log('onfieldchange', cleanFields);
-        setFields(cleanFields);
-      }}
-    >
-      <Form.Item
-        label="New Gene"
-        name="newGene"
-      >
-        <Input 
-          autoComplete={'none'}
+            value = fieldArr.join('');
+            setGene(value);
+          }}
         />
-      </Form.Item>
-
-    </Form>
+      </form>
+    </div>
   );
 }

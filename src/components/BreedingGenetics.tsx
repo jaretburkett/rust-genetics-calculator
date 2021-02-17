@@ -3,12 +3,11 @@ import { availableGeneticsStore, breedingGeneticsStore } from '../lib/store';
 import { FaTrashAlt, FaPlusCircle } from 'react-icons/fa';
 import { objCopy, redColor, greenColor, redGenes } from '../lib/basic';
 
-export default function AvailableGenetics() {
-  const [availableGenetics, setAvailableGenetics] = availableGeneticsStore.use();
+export default function BreedingGenetics() {
   const [breedingGenetics, setBreedingGenetics] = breedingGeneticsStore.use();
   return (
     <>
-    <p className="text-sm">Available Genetics</p>
+      <p className="text-sm">Breeding Genetics</p>
       <div
         style={{
           height: 200,
@@ -17,7 +16,7 @@ export default function AvailableGenetics() {
         }}
         className="bg-gray-100"
       >
-        {availableGenetics.map((value, index) => {
+        {breedingGenetics.map((value, index) => {
           return (
             <div
               key={index}
@@ -36,26 +35,13 @@ export default function AvailableGenetics() {
                   })
                 }
               </div>
-              <div style={{ marginRight: 5 }}>
-                <FaPlusCircle
-                  onClick={() => {
-                    const breeding = objCopy(breedingGenetics);
-                    breeding.push(value);
-                    setBreedingGenetics(breeding)
-                  }}
-                  className="cursor-pointer"
-                />
-              </div>
               <div>
-                <FaTrashAlt
-                  onClick={() => {
-                    console.log('delete ' + index)
-                    const available = objCopy(availableGenetics);
-                    available.splice(index, 1);
-                    setAvailableGenetics(available)
-                  }}
-                  className="cursor-pointer"
-                />
+                <FaTrashAlt onClick={() => {
+                  console.log('delete ' + index)
+                  const breeding = objCopy(breedingGenetics);
+                  breeding.splice(index, 1);
+                  setBreedingGenetics(breeding)
+                }} />
               </div>
             </div>
           )
