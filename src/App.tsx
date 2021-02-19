@@ -11,7 +11,7 @@ import TargetInput from './components/TargetInput';
 export default function App() {
   const isSmart = isSmartStore.useValue();
   return (
-    <div className="container mx-auto px-4 text-gray-50">
+    <div className="container mx-auto max-w-lg px-4 text-gray-50">
       <div className="text-center pt-3">
         <img src={logo} className="max-h-16 mx-auto" />
       </div>

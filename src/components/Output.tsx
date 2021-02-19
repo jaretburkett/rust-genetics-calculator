@@ -18,7 +18,7 @@ export default function Output() {
           padding: '10px 15px',
           overflow: 'auto'
         }}
-        className="rounded-sm px-4 py-3 bg-gray-700"
+        className="rounded-sm px-4 py-3 bg-gray-700 font-mono font-semibold"
       >
         {outputs.map((value, index) => {
           return (
