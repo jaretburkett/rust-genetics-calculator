@@ -2,7 +2,9 @@
 
 I was not happy with how the other genetic calculators worked, so I made my own that has all the features I want. 
 
-# [TRY IT NOW](TRY IT NOW)
+# [TRY IT NOW](https://jaretburkett.github.io/rust-genetics-calculator) 
+
+![Rust Genetics Calculator Preview](https://github.com/jaretburkett/rust-genetics-calculator/blob/main/github/preview.png?raw=true)
 
 ## Normal Mode
 In normal mode, you can enter the genetics of all the clones you have and select which ones to breed together. Once you
